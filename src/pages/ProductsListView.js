@@ -1,25 +1,46 @@
 import AppHeader from "../templates/Appheader";
 import ProductCard from "../templates/ProductCard";
-
-// Dummy data for products
-const products = [
-    { id: 1, name: 'Product 1', price: 10.99, description: 'Description for Product 1' },
-    { id: 2, name: 'Product 2', price: 19.99, description: 'Description for Product 2' },
-    { id: 3, name: 'Product 3', price: 14.99, description: 'Description for Product 3' },
-    { id: 4, name: 'Product 1', price: 10.99, description: 'Description for Product 1' },
-    { id: 5, name: 'Product 2', price: 19.99, description: 'Description for Product 2' },
-    // Add more products as needed
-];
+import React, { useState,useEffect } from 'react'
+import { auth, db } from '../firebase/FirebaseConfig.js'
+import {
+  query,
+  collection,
+  onSnapshot,
+  updateDoc,
+  doc,
+  addDoc,
+  deleteDoc,
+  getDocs,
+  where,
+} from 'firebase/firestore';
 
 function ProductListView() {
+
+    const [products, setProducts] = useState([])
+
+    // Read products from firebase
+    useEffect(() => {
+      const q = query(collection(db, 'Products'));
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        let productInfo = [];
+        querySnapshot.forEach((doc) => {
+          productInfo.push({ ...doc.data(), id: doc.id});
+        });
+        setProducts(productInfo);
+      console.log(productInfo)
+
+      });
+      return () => unsubscribe();
+    }, []);
+    
     // Render the product list view
     return (
         <div>
             <AppHeader/>
             <div className="row px-5 pt-3">
                 {products.map(product => (
-                    <div key={product.id} className="col-sm-3 col mb-4">
-                        <ProductCard/>
+                    <div key={product.id} className="col-sm-3 col mb-4 ">
+                        <ProductCard product={product}/>
                     </div>
                 ))}
             </div>
