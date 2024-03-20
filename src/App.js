@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Homepage from './pages/Homepage';
 import ProductListView from './pages/ProductsListView';
 import ProductDetails from './templates/ProductDetails';
-import CartItems from './pages/CartItems';
+import CartView from './pages/CartView';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       {/* <Homepage/> */}
       <ProductListView/>
       {/* <ProductDetails/> */}
-      <CartItems/>
+      <CartView/>
     </div>
   );
 }
