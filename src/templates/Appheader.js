@@ -15,6 +15,7 @@ export default function AppHeader(){
                     <Nav.Link href="/">Products</Nav.Link>
                 </Nav>
                 <Nav>
+                    <Nav.Link href="/login" className="justify-content-end">Cart</Nav.Link>
                     <Nav.Link href="/login" className="justify-content-end">Log In</Nav.Link>
                 </Nav>
                 </Navbar.Collapse>

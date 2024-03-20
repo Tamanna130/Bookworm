@@ -2,7 +2,11 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function ProductDetails({ show, handleCloseModal, product }) {
+function ProductDetails({ show, handleCloseModal, product, addToCart }) {
+    const handleAddToCart = () => {
+        addToCart(product); 
+        handleCloseModal(); // Close the modal after adding to cart
+    };
     return (
         <Modal show={show} onHide={handleCloseModal} size="lg">
             <Modal.Header closeButton>
@@ -20,7 +24,7 @@ function ProductDetails({ show, handleCloseModal, product }) {
                 }
             </Modal.Body>
             <Modal.Footer className="d-flex justify-content-center">
-                    <Button variant="primary" onClick={handleCloseModal}>Add To Cart</Button>
+                    <Button variant="primary" onClick={handleAddToCart}>Add To Cart</Button>
             </Modal.Footer>
         </Modal>
     );

@@ -35,6 +35,21 @@ function ProductListView() {
         setSelectedProduct(null);
     };
 
+    // Function to add product to cart
+    const addToCart = async (product) => {
+        try {
+            await addDoc(collection(db, 'cartItems'), {
+                name: product.name,
+                image: product.image,
+                price: product.price,
+                quantity: 1, // Initial quantity, can be adjusted as needed
+            });
+    
+            console.log("Product added to cart:", product);
+        } catch (error) {
+            console.error("Error adding product to cart:", error);
+        }
+    };
     // Read products from firebase
     useEffect(() => {
       const q = query(collection(db, 'Products'));
@@ -63,7 +78,7 @@ function ProductListView() {
             </div>
             
             {/* To render the modal */}
-            <ProductDetails show={showModal} handleCloseModal={handleCloseModal} product={selectedProduct} />
+            <ProductDetails show={showModal} handleCloseModal={handleCloseModal} product={selectedProduct} addToCart={addToCart}/>
         </div>
     );
 }
