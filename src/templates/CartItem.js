@@ -18,9 +18,17 @@ function CartItem ({ item, handleIncreaseQuantity, handleDecreaseQuantity, handl
                                             Price: {item.price}<br />
                                             Quantity: {item.quantity}
                                         </Card.Text>
-                                        <Button variant="primary" onClick={() => handleIncreaseQuantity(item.id)}>+</Button>
-                                        <Button variant="secondary" onClick={() => handleDecreaseQuantity(item.id)}>-</Button>
-                                        <Button variant="danger" onClick={() => handleDeleteItem(item.id)}>Remove</Button>
+                                        <Row md={6}>
+                                            <Col>
+                                                <Button variant="primary" onClick={() => handleIncreaseQuantity(item.id)}>+</Button>
+                                            </Col>
+                                            <Col>
+                                                <Button variant="secondary" onClick={() => handleDecreaseQuantity(item.id)}>-</Button>
+                                            </Col>
+                                            <Col>
+                                                <Button variant="danger" onClick={() => handleDeleteItem(item.id)}>Remove</Button>
+                                            </Col>
+                                        </Row>
                                     </Card.Body>
                                 </Col>
                             </Row>

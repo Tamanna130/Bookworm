@@ -12,10 +12,11 @@ export default function AppHeader(){
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
                     <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="/">Products</Nav.Link>
+                    <Nav.Link href="/all-products">Products</Nav.Link>
+                    <Nav.Link href="/cart" className="justify-content-end">Cart</Nav.Link>
                 </Nav>
                 <Nav>
-                    <Nav.Link href="/login" className="justify-content-end">Cart</Nav.Link>
+                    <Nav.Link href="/signup" className="justify-content-end">Sign up</Nav.Link>
                     <Nav.Link href="/login" className="justify-content-end">Log In</Nav.Link>
                 </Nav>
                 </Navbar.Collapse>

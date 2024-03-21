@@ -4,6 +4,7 @@ import { collection, getDocs, deleteDoc, doc, updateDoc, addDoc } from 'firebase
 import CartItem from '../templates/CartItem.js';
 import TotalBill from '../templates/TotalBill.js';
 import { Card, Button, Col, Row } from 'react-bootstrap';
+import AppHeader from '../templates/Appheader.js';
 
 function CartView() {
     const [cartItems, setCartItems] = useState([]);
@@ -111,22 +112,25 @@ const handleCheckout = async () => {
 };
 
     return (
-        <Row className="justify-content-center">
-        <Col md={8} className="cart-view-container" style={{ maxWidth: '800px', margin: '0 auto' }}>
-                    <div>
-                        {cartItems.map(item => (
-                            <CartItem
-                                key={item.id}
-                                item={item}
-                                handleIncreaseQuantity={handleIncreaseQuantity}
-                                handleDecreaseQuantity={handleDecreaseQuantity}
-                                handleDeleteItem={handleDeleteItem}
-                            />
-                        ))}
-                    </div>    
-        </Col>
-        <Col md={4} className="px-3"><TotalBill cartItems={cartItems} handleCheckout={handleCheckout} /></Col>
-        </Row>
+        <div>
+            <AppHeader/>
+            <Row className="justify-content-center pt-3 px-3">
+            <Col md={8} className="cart-view-container" style={{ maxWidth: '800px', margin: '0 auto' }}>
+                        <div>
+                            {cartItems.map(item => (
+                                <CartItem
+                                    key={item.id}
+                                    item={item}
+                                    handleIncreaseQuantity={handleIncreaseQuantity}
+                                    handleDecreaseQuantity={handleDecreaseQuantity}
+                                    handleDeleteItem={handleDeleteItem}
+                                />
+                            ))}
+                        </div>    
+            </Col>
+            <Col md={4} className="px-3"><TotalBill cartItems={cartItems} handleCheckout={handleCheckout} /></Col>
+            </Row>
+        </div>
     );
 }
 
