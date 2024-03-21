@@ -6,30 +6,6 @@ import { db } from '../firebase/FirebaseConfig.js';
 function TotalBill({ cartItems, handleCheckout }) {
     // Calculate total bill
     const totalBill = cartItems.reduce((total, item) => total + (item.quantity * item.price), 0);
-
-    // // Function to handle checkout
-    // const handleCheckout = async () => {
-    //     try {
-    //         // Create a new collection named "orders"
-    //         const orderRef = await collection(db, 'orders');
-
-    //         // Add each item in the cart to the "orders" collection
-    //         cartItems.forEach(async (item) => {
-    //             await addDoc(orderRef, {
-    //                 productName: item.name,
-    //                 quantity: item.quantity,
-    //                 price: item.price
-    //             });
-    //         });
-
-    //         // Show success message
-    //         alert('Successfully checked out!');
-    //     } catch (error) {
-    //         console.error('Error checking out:', error);
-    //         alert('Error checking out. Please try again later.');
-    //     }
-    // };
-
     return (
         <Card className="total-bill-container">
             <Card.Body>

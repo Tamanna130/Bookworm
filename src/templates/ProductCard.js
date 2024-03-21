@@ -12,10 +12,9 @@ function ProductCard({product, onShowModal}) {
         <Card.Body>
           <Card.Title>{product.name}</Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            {product.description}
           </Card.Text>
-          <Button variant="primary" onClick={handleShowDetails}>Go somewhere</Button>
+          <Button variant="primary" onClick={handleShowDetails}>View details</Button>
         </Card.Body>
       </Card>
   );
